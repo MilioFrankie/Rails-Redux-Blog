@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 // import { Link } from "react-router-dom";
 import { Card, Header, Container } from "semantic-ui-react";
-import getBlogs from "../reducers/blogs";
+import { getBlogs } from "../reducers/blogs";
 
 class BlogList extends React.Component {
   componentDidMount() {
@@ -30,13 +30,14 @@ class BlogList extends React.Component {
         <Header as="h2" textAlign="center">
           REDUX Blogs
         </Header>
-        <Card.Group itemsPerRow={4}>{this.renderBlogs()}</Card.Group>
+        <Card.Group itemsPerRow={3}>{this.renderBlogs()}</Card.Group>
       </Container>
     );
   }
 }
 
 const mapStateToProps = state => {
+  debugger;
   return { blogs: state.blogs };
 };
 export default connect(mapStateToProps)(BlogList);

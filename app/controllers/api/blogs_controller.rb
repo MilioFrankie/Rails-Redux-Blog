@@ -2,7 +2,7 @@ class Api::BlogsController < ApplicationController
   before_action :set_blog, only: [:show, :update, :destroy] 
 
   def index
-    render json: Blog.all 
+    render json: Blog.all
   end
 
   def show

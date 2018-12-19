@@ -1,4 +1,4 @@
-10.times do 
+12.times do 
   Blog.create(
     title: Faker::DumbAndDumber.quote,
     body: Faker::BojackHorseman.quote,
@@ -6,4 +6,4 @@
   )
 end
 
-puts '10 blogs created'
+puts '12 blogs created'
