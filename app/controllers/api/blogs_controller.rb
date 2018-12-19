@@ -1,4 +1,6 @@
 class Api::BlogsController < ApplicationController
+  before_action :set_blog, only: [:show, :update, :destroy] 
+
   def index
     render json: Blog.all 
   end
@@ -17,8 +19,7 @@ class Api::BlogsController < ApplicationController
   end
 
   def update
-    @blog.update(blog_params)
-    if @blog.save
+    if @blog.update(blog_params)
       render json: @blog
     else
       render json: { errors: @blog.errors.full_messages.join(',') }, status: 422

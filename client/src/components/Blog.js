@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 const Blog = () => {
   return (
     <div>
-      <h1>{this.props.match.params.name}</h1>
+      <h1 />
     </div>
   );
 };

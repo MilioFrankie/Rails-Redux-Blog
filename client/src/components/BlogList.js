@@ -1,26 +1,42 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link, withRouter } from "react-router-dom";
-import { dispatch } from "rxjs/internal/observable/range";
+// import { Link } from "react-router-dom";
+import { Card, Header, Container } from "semantic-ui-react";
+import getBlogs from "../reducers/blogs";
 
-const BlogList = ({ blogs, id }) => (
-  <ul>
-    {blogs.map(b => {
-      return (
-        <div>
-          <Link
-            to={`/blog/${b.name}`}
-            onClick={() => dispatch({ type: "BLOG", id })}
-          >
-            <li key={b.id}>{b.name}</li>
-          </Link>
-        </div>
-      );
-    })}
-  </ul>
-);
+class BlogList extends React.Component {
+  componentDidMount() {
+    this.props.dispatch(getBlogs());
+  }
+
+  renderBlogs = () => {
+    return this.props.blogs.map(blog => (
+      <Card key={blog.id}>
+        <Card.Content>
+          <Card.Header>{blog.title}</Card.Header>
+          <Card.Meta>{blog.author}</Card.Meta>
+          <Card.Description>{blog.body}</Card.Description>
+          <Card.Content extra>
+            {/* <Link to={`/blogs/${blog.id}`}> View</Link> */}
+          </Card.Content>
+        </Card.Content>
+      </Card>
+    ));
+  };
+
+  render() {
+    return (
+      <Container>
+        <Header as="h2" textAlign="center">
+          REDUX Blogs
+        </Header>
+        <Card.Group itemsPerRow={4}>{this.renderBlogs()}</Card.Group>
+      </Container>
+    );
+  }
+}
 
 const mapStateToProps = state => {
-  return { blogs: state.blogs, id: state.id };
+  return { blogs: state.blogs };
 };
-export default withRouter(connect(mapStateToProps)(BlogList));
+export default connect(mapStateToProps)(BlogList);

@@ -1,5 +1,5 @@
 import React from "react";
-import BlogForm from "./BlogForm";
+// import BlogForm from "./BlogForm";
 import BlogList from "./BlogList";
 
 const Home = () => {
@@ -7,7 +7,7 @@ const Home = () => {
     <div>
       <h1>Redux Blog</h1>
       <hr />
-      <BlogForm />
+      {/* <BlogForm /> */}
       <BlogList />
     </div>
   );
