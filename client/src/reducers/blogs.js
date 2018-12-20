@@ -3,11 +3,12 @@ import axios from "axios";
 const BLOGS = "BLOGS";
 const ADD_BLOG = "ADD_BLOG";
 
-export const getBlogs = () => {
+export const getBlogs = loader => {
   return dispatch => {
     axios
       .get("/api/blogs")
-      .then(res => dispatch({ type: BLOGS, blogs: res.data }));
+      .then(res => dispatch({ type: BLOGS, blogs: res.data }))
+      .then(loader);
   };
 };
 

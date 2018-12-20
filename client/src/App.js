@@ -1,15 +1,15 @@
 import React, { Fragment } from "react";
 import { Switch, Route } from "react-router-dom";
 import BlogList from "./components/BlogList";
-import Blog from "./components/Blog";
 import { Container } from "semantic-ui-react";
+import FetchBlog from './components/FetchBlog'
 
 const App = () => (
   <Fragment>
     <Container>
       <Switch>
         <Route exact path="/" component={BlogList} />
-        <Route exact path="/blog/:name" component={Blog} />
+        <Route path = "/blogs" component={FetchBlog}/>
       </Switch>
     </Container>
   </Fragment>
